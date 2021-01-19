@@ -1,0 +1,15 @@
+current directory: /home/carolina/insta_clone/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.3/ext/websocket-driver
+/home/carolina/.rbenv/versions/2.6.4/bin/ruby -I /home/carolina/.rbenv/versions/2.6.4/lib/ruby/2.6.0 -r ./siteconf20210119-9861-199r1e7.rb extconf.rb
+creating Makefile
+
+current directory: /home/carolina/insta_clone/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.3/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /home/carolina/insta_clone/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.3/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.so
+
+current directory: /home/carolina/insta_clone/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.3/ext/websocket-driver
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20210119-9861-wb07y0
