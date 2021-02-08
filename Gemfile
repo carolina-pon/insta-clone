@@ -49,9 +49,8 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-byebug'
-
-  # gem 'rubocop'
-  # gem 'rubocop-rails'
+  gem 'rubocop'
+  gem 'rubocop-rails'
   # gem 'pry-rails'
   
 end
