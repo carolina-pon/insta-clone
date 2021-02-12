@@ -11,7 +11,6 @@ module InstaClone
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
-
     # デフォルトでslimが生成されるように
     config.generators.template_engine = :slim
 
