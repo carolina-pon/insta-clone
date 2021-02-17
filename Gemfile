@@ -57,6 +57,8 @@ group :development do
   gem 'jquery-rails'
   gem 'popper_js'
   gem 'font-awesome-sass'
+
+  gem 'carrierwave'
 end
 
 group :test do
