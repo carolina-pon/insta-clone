@@ -52,13 +52,11 @@ group :development do
   gem 'rubocop'
   gem 'rubocop-rails'
   gem 'pry-rails'
-
+  gem 'faker'
   # bootstrap導入にあたり依存関係解消のため↓
   gem 'jquery-rails'
   gem 'popper_js'
-  gem 'font-awesome-sass'
   gem 'carrierwave'
-  gem 'faker'
 end
 
 group :test do
@@ -76,3 +74,4 @@ gem 'sorcery'
 gem 'slim-rails'
 gem 'redis-rails'
 gem 'rails-i18n'
+gem 'font-awesome-sass'
