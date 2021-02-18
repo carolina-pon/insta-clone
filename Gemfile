@@ -56,7 +56,6 @@ group :development do
   # bootstrap導入にあたり依存関係解消のため↓
   gem 'jquery-rails'
   gem 'popper_js'
-  gem 'carrierwave'
 end
 
 group :test do
@@ -75,3 +74,5 @@ gem 'slim-rails'
 gem 'redis-rails'
 gem 'rails-i18n'
 gem 'font-awesome-sass'
+gem 'mini_magick'
+gem 'carrierwave'
