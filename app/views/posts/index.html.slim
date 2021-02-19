@@ -2,6 +2,7 @@
   .row
     .col-md-8.col-12
       = render @posts
+      = paginate @posts
     .col-md-4.col-12
       - if logged_in?
         .profile-box.mb-3
@@ -14,15 +15,15 @@
           .card-body
             .user.mb-3
               = image_tag 'profile-placeholder.png', size: '40x40', class: 'rounded-circle mr-1'
-              | ダミー京介
+              | ダミーきょも&北斗
             .user.mb-3
               = image_tag 'profile-placeholder.png', size: '40x40', class: 'rounded-circle mr-1'
-              | ダミー寅泰
+              | ダミーじぇす&こーち
             .user.mb-3
               = image_tag 'profile-placeholder.png', size: '40x40', class: 'rounded-circle mr-1'
-              | ダミー常松
+              | ダミー樹
             .user.mb-3
               = image_tag 'profile-placeholder.png', size: '40x40', class: 'rounded-circle mr-1'
-              | ダミーまこと
+              | ダミーしんたろう
           .card-footer
             = link_to 'すべて見る', '#'
