@@ -6,7 +6,9 @@ class PostsController < ApplicationController
   def index
     # includesを使用すると、クエリ回数が最小限で読み込みできる(N+1問題)
     # @posts = Post.all.order(created_at: :desc)と記述すると投稿数分のクエリが発行されてしまう
-    @posts = Post.includes(:user).order(created_at: :desc)
+    # params[:page] にページの数値が入る
+    # => 2ページ目の時 localhost:3000/posts?page=2
+    @posts = Post.includes(:user).page(params[:page]).order(created_at: :desc)
   end
 
   def new
