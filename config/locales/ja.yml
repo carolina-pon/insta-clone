@@ -8,6 +8,9 @@ ja:
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
         username: 'ユーザー名'
+      post:
+        images: '画像'
+        body: '本文'
 
   attributes:
     created_at: '作成日時'
