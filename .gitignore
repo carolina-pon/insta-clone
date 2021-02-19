@@ -29,3 +29,5 @@
 /vendor
 /memo
 /public/uploads/
+# Redisのファイル？サーバー起動すると作られる。。
+dump.rdb
