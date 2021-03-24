@@ -56,6 +56,8 @@ group :development do
   # bootstrap導入にあたり依存関係解消のため↓
   gem 'jquery-rails'
   gem 'popper_js'
+  # ER図自動生成してくれるgem
+  gem 'rails-erd'
 end
 
 group :test do
