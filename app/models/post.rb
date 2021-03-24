@@ -25,7 +25,7 @@ class Post < ApplicationRecord
   validates :images, presence: true
   validates :body, presence: true, length: { maximum: 1000 }
   # commentsテーブルはuesrs,postsテーブルの中間テーブルになる
-  has_many :comments , dependent: :destroy
+  has_many :comments, dependent: :destroy
   # has_many,throughでlikesテーブルを通してusersテーブルの情報が得られる(多対多の関係)
   has_many :likes, dependent: :destroy
   has_many :like_users, through: :likes, source: :user
