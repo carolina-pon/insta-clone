@@ -24,9 +24,31 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
   has_many :posts, dependent: :destroy
+  # commentsテーブルはuesrs,postsテーブルの中間テーブルになる
   has_many :comments, dependent: :destroy
+  # has_many,throughでlikesテーブルを通してpostsテーブルの情報が得られる(多対多の関係)
+  has_many :likes, dependent: :destroy
+  has_many :like_posts, through: :likes, source: :post
 
   def own?(object)
     id == object.user_id
+  end
+
+  # like,unlike,like?メソッドの追加
+  # (post)には @post = Post.find(params[:post_id]) が入る
+  def like(post)
+    # この << が何かわからず。調べて近いかもと思ったのが collectionメソッド？
+    like_posts << post
+  end
+
+  # (post)には @post = Like.find(params[:id]).post が入る
+  def unlike(post)
+    like_posts.destroy(post)
+  end
+
+  # Range#includes?メソッド。
+  # like_postsの中に引数で渡したpostが含まれているか = likeされているか を判定している
+  def like?(post)
+    like_posts.include?(post)
   end
 end

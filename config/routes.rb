@@ -10,4 +10,9 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments, shallow: true
   end
+
+  # ネストしてないので /likes となる
+  # postにネストする形で記述してもいいみたい(どのポストへのいいねなのか分かりやすそう)
+  # その場合は /posts/:post_id/likes となる
+  resources :likes, only: %i[create destroy]
 end
