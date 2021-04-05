@@ -9,6 +9,8 @@ class PostsController < ApplicationController
     # params[:page] にページの数値が入る
     # => 2ページ目の時 localhost:3000/posts?page=2
     @posts = Post.includes(:user).page(params[:page]).order(created_at: :desc)
+    # 最新ユーザーを5人分表示
+    @users = User.recent(5)
   end
 
   def new
