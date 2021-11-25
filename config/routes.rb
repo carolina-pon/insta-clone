@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   # postにネストする形で記述してもいいみたい(どのポストへのいいねなのか分かりやすそう)
   # その場合は /posts/:post_id/likes となる
   resources :likes, only: %i[create destroy]
+  resources :relationships, only: %i[create destroy]
 end
