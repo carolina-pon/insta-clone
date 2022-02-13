@@ -30,6 +30,18 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :like_posts, through: :likes, source: :post
 
+  # followする
+  has_many :active_relationships, class_name: 'Relationship',
+                                  foreign_key: 'follower_id',
+                                  dependent: :destroy
+  # followされる
+  has_many :passive_relationships, class_name: 'Relationship',
+                                   foreign_key: 'followed_id',
+                                   dependent: :destroy
+  
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
+
   scope :recent, ->(count) { order(created_at: :desc).limit(count) }
   
   def own?(object)
@@ -39,7 +51,7 @@ class User < ApplicationRecord
   # like,unlike,like?メソッドの追加
   # (post)には @post = Post.find(params[:post_id]) が入る
   def like(post)
-    # この << が何かわからず。調べて近いかもと思ったのが collectionメソッド？
+    # collection<< メソッド
     like_posts << post
   end
 
@@ -52,5 +64,21 @@ class User < ApplicationRecord
   # like_postsの中に引数で渡したpostが含まれているか = likeされているか を判定している
   def like?(post)
     like_posts.include?(post)
+  end
+
+  def follow(other_user)
+    following << other_user
+  end
+
+  def unfollow(other_user)
+    following.destroy(other_user)
+  end
+
+  def following?(other_user)
+    following.include?(other_user)
+  end
+
+  def feed
+    Post.where(user_id: following_ids << id)
   end
 end
