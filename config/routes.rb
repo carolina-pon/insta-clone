@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  # localhost:3000を開いたとき、postsコントローラのindexアクションを呼び出す。
-  root 'posts#index'
-
   get '/login', to: 'user_sessions#new'
   post '/login', to: 'user_sessions#create'
   delete '/logout', to: 'user_sessions#destroy'
@@ -16,4 +13,11 @@ Rails.application.routes.draw do
   # その場合は /posts/:post_id/likes となる
   resources :likes, only: %i[create destroy]
   resources :relationships, only: %i[create destroy]
+
+  constraints ->(request) { request.session[:user_id].present? } do
+    # ログインしてる時のルートパス
+    root 'posts#index'
+  end
+  # ログインしてない時のルートパス
+  root 'user_sessions#new'
 end

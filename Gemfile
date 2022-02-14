@@ -79,4 +79,4 @@ gem 'font-awesome-sass'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'kaminari'
-gem "mimemagic", "~> 0.3.5" 
+gem 'mimemagic', '~> 0.3.5'
