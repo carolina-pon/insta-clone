@@ -70,6 +70,8 @@ class User < ApplicationRecord
     following << other_user
   end
 
+  # deleteだとコールバックがスキップされるため、バリデーションが適用できない
+  # destroyだとモデルを介して処理されるため上記の問題を解消できる
   def unfollow(other_user)
     following.destroy(other_user)
   end
