@@ -22,7 +22,7 @@ class UserSessionsController < ApplicationController
   end
 
   private
-
+  # current_userが存在する＝ログインしていればposts_pathへ遷移させる
   def check_logged_in
     redirect_to posts_path if current_user.present?
   end

@@ -30,11 +30,14 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :like_posts, through: :likes, source: :post
 
-  # followする
+  # integer型のためforeign_keyを設定
+  # フォローしている人・フォローされている人を取得したいが、参照先はどちらもRelationshipになる
+  # class_nameを用いて同じモデルを参照し(自己結合)上記の2通りの関連づけを行い、それぞれのレコードの取得ができるようにする
+  # 能動的なフォロー関係＝フォローしている
   has_many :active_relationships, class_name: 'Relationship',
                                   foreign_key: 'follower_id',
                                   dependent: :destroy
-  # followされる
+  # 受動的なフォロー関係＝フォローされている
   has_many :passive_relationships, class_name: 'Relationship',
                                    foreign_key: 'followed_id',
                                    dependent: :destroy

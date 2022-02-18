@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :likes, only: %i[create destroy]
   resources :relationships, only: %i[create destroy]
 
+  # これRailsガイド読んだけど理解あやふや　リクエストのセッションIDをuser_idしか受け付けないよと指定している？
   constraints ->(request) { request.session[:user_id].present? } do
     # ログインしてる時のルートパス
     root 'posts#index'

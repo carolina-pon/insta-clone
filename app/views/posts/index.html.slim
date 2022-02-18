@@ -1,6 +1,7 @@
 .container
   .row
     .col-md-8.col-12
+      / フォローしているユーザーがない＝表示する投稿がなければ「投稿がありません」と表示する
       - if @posts.present?
         = render @posts
       - else 
