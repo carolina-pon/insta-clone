@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'posts#index'
+
   get '/login', to: 'user_sessions#new'
   post '/login', to: 'user_sessions#create'
   delete '/logout', to: 'user_sessions#destroy'
@@ -13,12 +15,4 @@ Rails.application.routes.draw do
   # その場合は /posts/:post_id/likes となる
   resources :likes, only: %i[create destroy]
   resources :relationships, only: %i[create destroy]
-
-  # これRailsガイド読んだけど理解あやふや　リクエストのセッションIDをuser_idしか受け付けないよと指定している？
-  constraints ->(request) { request.session[:user_id].present? } do
-    # ログインしてる時のルートパス
-    root 'posts#index'
-  end
-  # ログインしてない時のルートパス
-  root 'user_sessions#new'
 end
