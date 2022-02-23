@@ -8,7 +8,15 @@ class PostsController < ApplicationController
     # @posts = Post.all.order(created_at: :desc)と記述すると投稿数分のクエリが発行されてしまう
     # params[:page] にページの数値が入る
     # => 2ページ目の時 localhost:3000/posts?page=2
-    @posts = Post.includes(:user).page(params[:page]).order(created_at: :desc)
+    @posts = if current_user
+               # current_userがフォローしているユーザーの投稿を取ってくる
+               current_user.feed.includes(:user).page(params[:page])
+             else
+               # ログインしていなければ全てのユーザーの投稿を取ってくる
+               Post.all.includes(:user).page(params[:page])
+             end
+    # 最新ユーザーを5人分表示
+    @users = User.recent(5)
   end
 
   def new

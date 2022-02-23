@@ -1,7 +1,12 @@
 .container
   .row
     .col-md-8.col-12
-      = render @posts
+      / フォローしているユーザーがない＝表示する投稿がなければ「投稿がありません」と表示する
+      - if @posts.present?
+        = render @posts
+      - else 
+        .text-center.font-weight-bold
+          | 投稿がありません
       = paginate @posts
     .col-md-4.col-12
       - if logged_in?
@@ -13,17 +18,7 @@
           .card-header
             | ユーザー
           .card-body
-            .user.mb-3
-              = image_tag 'profile-placeholder.png', size: '40x40', class: 'rounded-circle mr-1'
-              | ダミーきょも&北斗
-            .user.mb-3
-              = image_tag 'profile-placeholder.png', size: '40x40', class: 'rounded-circle mr-1'
-              | ダミーじぇす&こーち
-            .user.mb-3
-              = image_tag 'profile-placeholder.png', size: '40x40', class: 'rounded-circle mr-1'
-              | ダミー樹
-            .user.mb-3
-              = image_tag 'profile-placeholder.png', size: '40x40', class: 'rounded-circle mr-1'
-              | ダミーしんたろう
+            / usersコントローラーのindexアクションが呼び出される
+            = render @users
           .card-footer
-            = link_to 'すべて見る', '#'
+            = link_to 'すべて見る', users_path

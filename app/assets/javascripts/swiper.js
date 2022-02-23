@@ -1,3 +1,3 @@
 $(function() {
-  new Swiper('.swiper-container')
+  new Swiper('.swiper')
 })

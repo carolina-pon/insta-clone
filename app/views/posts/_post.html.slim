@@ -1,8 +1,9 @@
 .card.mb-5.post
   .card-header
     .d-flex.align-items-center
-      = image_tag 'profile-placeholder.png', size: '40x40', class: 'rounded-circle mr-1'
-      = post.user.username
+      = link_to user_path(post.user) do
+        = image_tag 'profile-placeholder.png', size: '40x40', class: 'rounded-circle mr-1'
+        = post.user.username
       - if current_user&.own?(post)
         .ml-auto
           = link_to post_path(post), class: 'mr-3', method: :delete, data: { confirm: '本当に削除しますか？' } do
@@ -13,7 +14,7 @@
         .ml-auto
           = render 'like_area', post: post
   = link_to post_path(post) do
-    .swiper-container
+    .swiper
       .swiper-wrapper
         - post.images.each do |image|
           .swiper-slide

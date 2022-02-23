@@ -28,5 +28,6 @@
 /config/database.yml
 /vendor
 /public/uploads/
+/memo
 # Redisのファイル？サーバー起動すると作られる。。
 dump.rdb
