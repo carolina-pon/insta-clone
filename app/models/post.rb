@@ -29,4 +29,9 @@ class Post < ApplicationRecord
   # has_many,throughでlikesテーブルを通してusersテーブルの情報が得られる(多対多の関係)
   has_many :likes, dependent: :destroy
   has_many :like_users, through: :likes, source: :user
+
+  # scopeに引数を持たせ、検索ワードが入るようにしている
+  scope :body_contain, ->(word) { where('posts.body LIKE ?', "%#{word}%") }
+  scope :comment_body_contain, ->(word) { joins(:comments).where('comments.body LIKE ?', "%#{word}%") }
+  scope :username_contain, ->(word) { joins(:user).where('username LIKE ?', "%#{word}%") }
 end
