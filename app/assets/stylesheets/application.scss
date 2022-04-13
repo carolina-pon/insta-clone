@@ -97,8 +97,29 @@ img {
   }
 }
 
-
 .pagination {
   justify-content: center;
 }
 
+.thumbs {
+  width: 100%;
+  position: relative;
+  display: block;
+
+  // 擬似要素を追加する
+  // ::before は要素の直前に内容を追加する、という意
+  &::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
+  // ::beforeで作った枠に対しabsoluteで覆うように画像表示
+  // object-fitで上記枠にフィットさせ、はみ出ているとこをトリミングしてる
+  img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    object-fit: cover;
+  }
+}
