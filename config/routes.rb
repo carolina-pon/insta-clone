@@ -13,10 +13,13 @@ Rails.application.routes.draw do
     end
     resources :comments
   end
-
   # ネストしてないので /likes となる
   # postにネストする形で記述してもいいみたい(どのポストへのいいねなのか分かりやすそう)
   # その場合は /posts/:post_id/likes となる
   resources :likes, only: %i[create destroy]
   resources :relationships, only: %i[create destroy]
+  # 名前空間でグループ化　/mypage/account/~ というURLが生成される
+  namespace :mypage do
+    resource :account, only: %i[edit update]
+  end
 end
