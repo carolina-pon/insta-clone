@@ -58,6 +58,7 @@ group :development do
   gem 'popper_js'
   # ER図自動生成してくれるgem
   gem 'rails-erd'
+  gem 'letter_opener_web'
 end
 
 group :test do
@@ -80,3 +81,4 @@ gem 'mini_magick'
 gem 'carrierwave'
 gem 'kaminari'
 gem 'mimemagic', '~> 0.3.5'
+
