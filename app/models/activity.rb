@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: notifications
+# Table name: activities
 #
 #  id           :bigint           not null, primary key
 #  action_type  :integer          not null
@@ -13,12 +13,12 @@
 #
 # Indexes
 #
-#  index_notifications_on_subject_type_and_subject_id  (subject_type,subject_id)
-#  index_notifications_on_user_id                      (user_id)
+#  index_activities_on_subject_type_and_subject_id  (subject_type,subject_id)
+#  index_activities_on_user_id                      (user_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (user_id => users.id)
 #
-class Notification < ApplicationRecord
+class Activity < ApplicationRecord
 end

@@ -30,3 +30,4 @@
 /public/uploads/
 # Redisのファイル？サーバー起動すると作られる。。
 dump.rdb
+/memo
