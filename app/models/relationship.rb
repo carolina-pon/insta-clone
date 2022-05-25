@@ -18,9 +18,15 @@ class Relationship < ApplicationRecord
   # class_name
   belongs_to :follower, class_name: 'User'
   belongs_to :followed, class_name: 'User'
+  has_one :activity, as: :subject, dependent: :destroy
   validates :follower_id, presence: true
   validates :followed_id, presence: true
   # いいね機能同様、同じ人を何度もフォローするのを防ぐ
   # scopeをつけないと、全ユーザーのうち早い者勝ちで最初の1人しかそのユーザーをフォローできなくなる
   validates :follower_id, uniqueness: { scope: :followed_id }
+
+  private
+  def create_activities
+    Activity.create(subject: self, user: followed, action_type: :followed_me)
+  end
 end
