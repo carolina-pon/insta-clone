@@ -25,6 +25,9 @@ class Relationship < ApplicationRecord
   # scopeをつけないと、全ユーザーのうち早い者勝ちで最初の1人しかそのユーザーをフォローできなくなる
   validates :follower_id, uniqueness: { scope: :followed_id }
 
+  # フォローボタンを押した時(relationshipがcreateされた時)通知も作成される
+  after_create_commit :create_activities
+
   private
   def create_activities
     Activity.create(subject: self, user: followed, action_type: :followed_me)

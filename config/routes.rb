@@ -18,8 +18,13 @@ Rails.application.routes.draw do
   # その場合は /posts/:post_id/likes となる
   resources :likes, only: %i[create destroy]
   resources :relationships, only: %i[create destroy]
+  resources :activities, only: [] do
+    # メンバールーティングはidを含む→ /activities/:id/read
+    patch :read, on: :member
+  end
   # 名前空間でグループ化　/mypage/account/~ というURLが生成される
   namespace :mypage do
     resource :account, only: %i[edit update]
+    resources :activities, only: %i[index]
   end
 end

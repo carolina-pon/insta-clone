@@ -25,9 +25,10 @@ class Like < ApplicationRecord
   belongs_to :post
   has_one :activity, as: :subject, dependent: :destroy
 
-  # user_idはユニーク制約を付ける 1人のいいねが重複するのを防ぐため？
+  # user_idはユニーク制約を付ける 1人のいいねが重複するのを防ぐため
   validates :user_id, uniqueness: { scope: :post_id }
 
+  # いいねボタンを押した時(likeがcreateされた時)通知も作成される
   after_create_commit :create_activities
 
   private
