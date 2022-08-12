@@ -55,9 +55,10 @@ group :development do
   gem 'faker'
   # bootstrap導入にあたり依存関係解消のため↓
   gem 'jquery-rails'
-  gem 'popper_js'
+  gem 'popper_js', '~> 1.14.5'
   # ER図自動生成してくれるgem
   gem 'rails-erd'
+  gem 'letter_opener_web'
 end
 
 group :test do
@@ -80,3 +81,4 @@ gem 'mini_magick'
 gem 'carrierwave'
 gem 'kaminari'
 gem 'mimemagic', '~> 0.3.5'
+
