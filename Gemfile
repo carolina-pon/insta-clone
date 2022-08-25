@@ -59,6 +59,7 @@ group :development do
   # ER図自動生成してくれるgem
   gem 'rails-erd'
   gem 'letter_opener_web'
+  gem 'config'
 end
 
 group :test do
