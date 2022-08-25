@@ -6,7 +6,8 @@ class CommentsController < ApplicationController
     # buildはnewのエイリアス(以前は違ったらしい)
     # 慣習としてbuildは関連付けされたモデルからインスタンスを生成する際に使用。
     @comment = current_user.comments.build(comment_params)
-    @comment.save
+    # deliver_later…
+    UserMailer.with(user_from: current_user, user_to: @comment.post.user, comment: @comment).comment_post.deliver_later if @comment.save
   end
 
   def edit
