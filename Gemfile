@@ -59,6 +59,7 @@ group :development do
   # ER図自動生成してくれるgem
   gem 'rails-erd'
   gem 'letter_opener_web'
+  gem 'config'
 end
 
 group :test do
@@ -81,4 +82,4 @@ gem 'mini_magick'
 gem 'carrierwave'
 gem 'kaminari'
 gem 'mimemagic', '~> 0.3.5'
-
+gem 'config'
