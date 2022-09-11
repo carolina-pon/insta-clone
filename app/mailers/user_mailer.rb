@@ -18,5 +18,4 @@ class UserMailer < ApplicationMailer
     @user_to = params[:user_to]
     mail(to: @user_to.email, subject: "#{@user_from.username}があなたをフォローしました")
   end
-
 end
