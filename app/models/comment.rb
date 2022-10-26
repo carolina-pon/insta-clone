@@ -34,7 +34,7 @@ class Comment < ApplicationRecord
   after_create_commit :create_activities
 
   private
-  
+
   def create_activities
     Activity.create(subject: self, user: post.user, action_type: :commented_to_own_post)
   end

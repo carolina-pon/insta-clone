@@ -60,6 +60,8 @@ group :development do
   gem 'rails-erd'
   gem 'letter_opener_web'
   gem 'config'
+  gem 'sidekiq', '~> 5.0'
+  gem 'sinatra'
 end
 
 group :test do

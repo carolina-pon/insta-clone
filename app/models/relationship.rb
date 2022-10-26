@@ -29,6 +29,7 @@ class Relationship < ApplicationRecord
   after_create_commit :create_activities
 
   private
+
   def create_activities
     Activity.create(subject: self, user: followed, action_type: :followed_me)
   end

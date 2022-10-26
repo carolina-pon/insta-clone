@@ -26,9 +26,9 @@ class Activity < ApplicationRecord
   belongs_to :subject, polymorphic: true
   belongs_to :user
 
-  scope :recent, ->(count) { order(created_at: :desc).limit(count)}
+  scope :recent, ->(count) { order(created_at: :desc).limit(count) }
   # オブジェクト取得する際、integer(数字)じゃなくて下記の項目名で取得できる
-  # https://pikawaka.com/rails/enum 
+  # https://pikawaka.com/rails/enum
   enum action_type: { commented_to_own_post: 0, liked_to_own_post: 1, followed_me: 2 }
   enum read: { unread: false, read: true }
 

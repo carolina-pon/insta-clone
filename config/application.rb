@@ -20,6 +20,7 @@ module InstaClone
     config.i18n.default_locale = :ja
     # i18nの複数ロケールファイルが読み込まれるようパスを通す
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+    config.active_job.queue_adapter = :sidekiq
 
     config.generators do |g|
       g.assets false # CSS,JSを自動生成しない
