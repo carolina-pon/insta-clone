@@ -3,7 +3,8 @@ class RelationshipsController < ApplicationController
 
   def create
     @user = User.find(params[:followed_id])
-    UserMailer.with(user_from: current_user, user_to: @user).follow.deliver_later if current_user.follow(@user)
+    # ログインユーザーがあるユーザーからフォローされた時、通知をオンしていればメールが届く
+    UserMailer.with(user_from: current_user, user_to: @user).follow.deliver_later if current_user.follow(@user) && @user.notification_on_follow?
   end
 
   def destroy

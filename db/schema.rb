@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2022_10_03_093417) do
     t.string "avatar"
     t.boolean "notification_on_comment", default: true
     t.boolean "notification_on_like", default: true
-    t.boolean "notification_on_follow"
+    t.boolean "notification_on_follow", default: true
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
