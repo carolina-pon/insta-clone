@@ -17,6 +17,6 @@
 //= require popper
 //= require bootstrap/dist/js/bootstrap.js 
 //= require_tree .
-//= require swiper/swiper-bundle.js
+//= require swiper/js/swiper.js
 //= require swiper.js
 

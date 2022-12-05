@@ -1,6 +1,6 @@
 .post-detail.card
   .image-box
-    .swiper
+    .swiper-container
       .swiper-wrapper
         - @post.images.each do |image|
           .swiper-slide
@@ -9,7 +9,7 @@
   .image-info-box
     .profile-box.p-3
       .d-flex.align-items-center
-        = image_tag @post.user.avatar.url size: '40x40', class: 'rounded-circle mr-1'
+        = image_tag @post.user.avatar.url, size: '40x40', class: 'rounded-circle mr-1'
         = @post.user.username
         - if current_user&.own?(@post)
           .ml-auto
@@ -19,7 +19,7 @@
               = icon 'far', 'edit', class: 'fa-lg'
         - if current_user && !current_user.own?(@post)
           .ml-auto
-            = render 'like_area', post: @post      
+            = render 'like_area', post: @post
     hr.m-0
     .post-body.p-3
       / 投稿の本文
