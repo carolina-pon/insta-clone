@@ -24,7 +24,7 @@ RSpec.describe User, type: :model do
     it 'メールアドレスは一意であること' do
       user = create(:user)
       same_email_user = build(:user, email: user.email)
-      same_name_user.valid?
+      same_email_user.valid?
       expect(same_email_user.errors[:email]).to include('はすでに存在します')
     end
   end
